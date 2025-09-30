@@ -1,0 +1,38 @@
+[2025-09-14T13:26:38.160+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_transform scheduled__2025-09-14T12:00:00+00:00 [queued]>
+[2025-09-14T13:26:38.166+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_transform scheduled__2025-09-14T12:00:00+00:00 [queued]>
+[2025-09-14T13:26:38.166+0000] {taskinstance.py:1361} INFO - Starting attempt 5 of 6
+[2025-09-14T13:26:38.174+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): gold_transform> on 2025-09-14 12:00:00+00:00
+[2025-09-14T13:26:38.178+0000] {standard_task_runner.py:57} INFO - Started process 12864 to run task
+[2025-09-14T13:26:38.181+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'gold_transform', 'scheduled__2025-09-14T12:00:00+00:00', '--job-id', '681', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmp77c0zkgj']
+[2025-09-14T13:26:38.183+0000] {standard_task_runner.py:85} INFO - Job 681: Subtask gold_transform
+[2025-09-14T13:26:38.222+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.gold_transform scheduled__2025-09-14T12:00:00+00:00 [running]> on host 0d0cd054d690
+[2025-09-14T13:26:38.494+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='gold_transform' AIRFLOW_CTX_EXECUTION_DATE='2025-09-14T12:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='5' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-14T12:00:00+00:00'
+[2025-09-14T13:26:38.501+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/etl/db_utils.py", line 11, in run_sql_scripts
+    cur.execute(sql)
+psycopg2.errors.DependentObjectsStillExist: cannot drop table gold.fact_listening_history because other objects depend on it
+DETAIL:  view gold.view_top_songs depends on table gold.fact_listening_history
+view gold.view_total_listening_by_day depends on table gold.fact_listening_history
+view gold.view_total_listening_overall depends on table gold.fact_listening_history
+view gold.view_top_artists depends on table gold.fact_listening_history
+view gold.view_monthly_genre_distribution depends on table gold.fact_listening_history
+view gold.view_monthly_genre_top_artists depends on table gold.fact_listening_history
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+
+[2025-09-14T13:26:38.510+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=spotify_etl_pipeline, task_id=gold_transform, execution_date=20250914T120000, start_date=20250914T132638, end_date=20250914T132638
+[2025-09-14T13:26:38.522+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 681 for task gold_transform (cannot drop table gold.fact_listening_history because other objects depend on it
+DETAIL:  view gold.view_top_songs depends on table gold.fact_listening_history
+view gold.view_total_listening_by_day depends on table gold.fact_listening_history
+view gold.view_total_listening_overall depends on table gold.fact_listening_history
+view gold.view_top_artists depends on table gold.fact_listening_history
+view gold.view_monthly_genre_distribution depends on table gold.fact_listening_history
+view gold.view_monthly_genre_top_artists depends on table gold.fact_listening_history
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+; 12864)
+[2025-09-14T13:26:38.559+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-09-14T13:26:38.583+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

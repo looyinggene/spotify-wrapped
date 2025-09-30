@@ -1,0 +1,14 @@
+[2025-09-12T05:04:54.978+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.load_genres manual__2025-09-12T05:04:39.346252+00:00 [queued]>
+[2025-09-12T05:04:54.987+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.load_genres manual__2025-09-12T05:04:39.346252+00:00 [queued]>
+[2025-09-12T05:04:54.987+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-12T05:04:55.007+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): load_genres> on 2025-09-12 05:04:39.346252+00:00
+[2025-09-12T05:04:55.014+0000] {standard_task_runner.py:57} INFO - Started process 23045 to run task
+[2025-09-12T05:04:55.025+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'load_genres', 'manual__2025-09-12T05:04:39.346252+00:00', '--job-id', '263', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmp333zhjj9']
+[2025-09-12T05:04:55.042+0000] {standard_task_runner.py:85} INFO - Job 263: Subtask load_genres
+[2025-09-12T05:04:55.092+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.load_genres manual__2025-09-12T05:04:39.346252+00:00 [running]> on host 0d0cd054d690
+[2025-09-12T05:04:55.177+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='load_genres' AIRFLOW_CTX_EXECUTION_DATE='2025-09-12T05:04:39.346252+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-12T05:04:39.346252+00:00'
+[2025-09-12T05:04:55.464+0000] {logging_mixin.py:151} INFO - ✅ Upserted 4 genre records
+[2025-09-12T05:04:55.465+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-09-12T05:04:55.472+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=spotify_etl_pipeline, task_id=load_genres, execution_date=20250912T050439, start_date=20250912T050454, end_date=20250912T050455
+[2025-09-12T05:04:55.494+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-12T05:04:55.526+0000] {taskinstance.py:2784} INFO - 1 downstream tasks scheduled from follow-on schedule check

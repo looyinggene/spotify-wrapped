@@ -1,0 +1,21 @@
+[2025-09-27T14:04:00.203+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_view scheduled__2025-09-27T13:00:00+00:00 [queued]>
+[2025-09-27T14:04:00.210+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_view scheduled__2025-09-27T13:00:00+00:00 [queued]>
+[2025-09-27T14:04:00.210+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2025-09-27T14:04:00.219+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): gold_view> on 2025-09-27 13:00:00+00:00
+[2025-09-27T14:04:00.224+0000] {standard_task_runner.py:57} INFO - Started process 65629 to run task
+[2025-09-27T14:04:00.227+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'gold_view', 'scheduled__2025-09-27T13:00:00+00:00', '--job-id', '2567', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmpsdvpqy1y']
+[2025-09-27T14:04:00.229+0000] {standard_task_runner.py:85} INFO - Job 2567: Subtask gold_view
+[2025-09-27T14:04:00.432+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.gold_view scheduled__2025-09-27T13:00:00+00:00 [running]> on host 8522660cfb6a
+[2025-09-27T14:04:00.501+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='gold_view' AIRFLOW_CTX_EXECUTION_DATE='2025-09-27T13:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-27T13:00:00+00:00'
+[2025-09-27T14:04:00.508+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_monthly_genre_distribution.sql
+[2025-09-27T14:04:00.510+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_monthly_genre_top_artists.sql
+[2025-09-27T14:04:00.511+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_top_artists.sql
+[2025-09-27T14:04:00.513+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_top_songs.sql
+[2025-09-27T14:04:00.514+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_total_listening_by_day.sql
+[2025-09-27T14:04:00.515+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_total_listening_overall.sql
+[2025-09-27T14:04:00.516+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_top_songs_with_preview.sql
+[2025-09-27T14:04:00.518+0000] {logging_mixin.py:151} INFO - ✅ All SQL scripts executed successfully
+[2025-09-27T14:04:00.518+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-09-27T14:04:00.526+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=spotify_etl_pipeline, task_id=gold_view, execution_date=20250927T130000, start_date=20250927T140400, end_date=20250927T140400
+[2025-09-27T14:04:00.577+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-27T14:04:00.711+0000] {taskinstance.py:2784} INFO - 1 downstream tasks scheduled from follow-on schedule check

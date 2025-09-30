@@ -1,0 +1,15 @@
+[2025-09-26T11:00:39.752+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.load_audio_previews scheduled__2025-09-26T10:00:00+00:00 [queued]>
+[2025-09-26T11:00:39.758+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.load_audio_previews scheduled__2025-09-26T10:00:00+00:00 [queued]>
+[2025-09-26T11:00:39.759+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2025-09-26T11:00:39.771+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): load_audio_previews> on 2025-09-26 10:00:00+00:00
+[2025-09-26T11:00:39.778+0000] {standard_task_runner.py:57} INFO - Started process 28425 to run task
+[2025-09-26T11:00:39.781+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'load_audio_previews', 'scheduled__2025-09-26T10:00:00+00:00', '--job-id', '2382', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmprdlu8_fa']
+[2025-09-26T11:00:39.783+0000] {standard_task_runner.py:85} INFO - Job 2382: Subtask load_audio_previews
+[2025-09-26T11:00:39.976+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.load_audio_previews scheduled__2025-09-26T10:00:00+00:00 [running]> on host 8522660cfb6a
+[2025-09-26T11:00:40.053+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='load_audio_previews' AIRFLOW_CTX_EXECUTION_DATE='2025-09-26T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-26T10:00:00+00:00'
+[2025-09-26T11:00:40.060+0000] {logging_mixin.py:151} INFO - Loading 5 top song previews into gold.spotify_top_song_previews.
+[2025-09-26T11:00:40.063+0000] {logging_mixin.py:151} INFO - ✅ Successfully loaded top song previews.
+[2025-09-26T11:00:40.063+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-09-26T11:00:40.069+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=spotify_etl_pipeline, task_id=load_audio_previews, execution_date=20250926T100000, start_date=20250926T110039, end_date=20250926T110040
+[2025-09-26T11:00:40.098+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-26T11:00:40.111+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

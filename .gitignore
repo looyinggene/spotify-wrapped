@@ -1,0 +1,11 @@
+# Sensitive Data
+key.env
+.env
+.env.local
+
+# Dependencies
+node_modules
+
+# Build artifacts
+build
+dist

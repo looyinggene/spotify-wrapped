@@ -1,0 +1,36 @@
+[2025-09-24T03:58:48.210+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_transform manual__2025-09-24T03:56:13.764170+00:00 [queued]>
+[2025-09-24T03:58:48.231+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_transform manual__2025-09-24T03:56:13.764170+00:00 [queued]>
+[2025-09-24T03:58:48.232+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 6
+[2025-09-24T03:58:48.285+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): gold_transform> on 2025-09-24 03:56:13.764170+00:00
+[2025-09-24T03:58:48.368+0000] {standard_task_runner.py:57} INFO - Started process 40905 to run task
+[2025-09-24T03:58:48.379+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'gold_transform', 'manual__2025-09-24T03:56:13.764170+00:00', '--job-id', '1863', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmpke__gigq']
+[2025-09-24T03:58:48.405+0000] {standard_task_runner.py:85} INFO - Job 1863: Subtask gold_transform
+[2025-09-24T03:58:48.602+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.gold_transform manual__2025-09-24T03:56:13.764170+00:00 [running]> on host 8a603698361b
+[2025-09-24T03:58:49.032+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='gold_transform' AIRFLOW_CTX_EXECUTION_DATE='2025-09-24T03:56:13.764170+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-24T03:56:13.764170+00:00'
+[2025-09-24T03:58:49.044+0000] {logging_mixin.py:151} INFO - Executed sql/gold/listening_history/fact_listening_history.sql
+[2025-09-24T03:58:49.051+0000] {logging_mixin.py:151} INFO - Executed sql/gold/listening_history/dim_tracks.sql
+[2025-09-24T03:58:49.055+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/etl/db_utils.py", line 11, in run_sql_scripts
+    cur.execute(sql)
+psycopg2.errors.DependentObjectsStillExist: cannot drop table gold.dim_artists because other objects depend on it
+DETAIL:  view gold.view_monthly_genre_distribution depends on table gold.dim_artists
+view gold.view_monthly_genre_top_artists depends on table gold.dim_artists
+view gold.view_top_artists depends on table gold.dim_artists
+view gold.view_top_songs depends on table gold.dim_artists
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+
+[2025-09-24T03:58:49.065+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=spotify_etl_pipeline, task_id=gold_transform, execution_date=20250924T035613, start_date=20250924T035848, end_date=20250924T035849
+[2025-09-24T03:58:49.078+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 1863 for task gold_transform (cannot drop table gold.dim_artists because other objects depend on it
+DETAIL:  view gold.view_monthly_genre_distribution depends on table gold.dim_artists
+view gold.view_monthly_genre_top_artists depends on table gold.dim_artists
+view gold.view_top_artists depends on table gold.dim_artists
+view gold.view_top_songs depends on table gold.dim_artists
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+; 40905)
+[2025-09-24T03:58:49.110+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-09-24T03:58:49.139+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

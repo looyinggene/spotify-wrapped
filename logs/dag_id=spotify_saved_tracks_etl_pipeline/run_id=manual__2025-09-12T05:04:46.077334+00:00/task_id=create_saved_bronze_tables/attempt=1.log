@@ -1,0 +1,22 @@
+[2025-09-12T05:04:48.746+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_saved_tracks_etl_pipeline.create_saved_bronze_tables manual__2025-09-12T05:04:46.077334+00:00 [queued]>
+[2025-09-12T05:04:48.762+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_saved_tracks_etl_pipeline.create_saved_bronze_tables manual__2025-09-12T05:04:46.077334+00:00 [queued]>
+[2025-09-12T05:04:48.770+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-12T05:04:49.231+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): create_saved_bronze_tables> on 2025-09-12 05:04:46.077334+00:00
+[2025-09-12T05:04:49.284+0000] {standard_task_runner.py:57} INFO - Started process 23021 to run task
+[2025-09-12T05:04:49.307+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_saved_tracks_etl_pipeline', 'create_saved_bronze_tables', 'manual__2025-09-12T05:04:46.077334+00:00', '--job-id', '261', '--raw', '--subdir', 'DAGS_FOLDER/spotify_saved_dag.py', '--cfg-path', '/tmp/tmp20x5glfj']
+[2025-09-12T05:04:49.364+0000] {standard_task_runner.py:85} INFO - Job 261: Subtask create_saved_bronze_tables
+[2025-09-12T05:04:49.629+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_saved_tracks_etl_pipeline.create_saved_bronze_tables manual__2025-09-12T05:04:46.077334+00:00 [running]> on host 0d0cd054d690
+[2025-09-12T05:04:50.016+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_saved_tracks_etl_pipeline' AIRFLOW_CTX_TASK_ID='create_saved_bronze_tables' AIRFLOW_CTX_EXECUTION_DATE='2025-09-12T05:04:46.077334+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-12T05:04:46.077334+00:00'
+[2025-09-12T05:04:50.046+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/etl/db_utils.py", line 9, in run_sql_scripts
+    with open(path, "r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'sql/bronze/create_spotify_saved_songs.sql'
+[2025-09-12T05:04:50.107+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=spotify_saved_tracks_etl_pipeline, task_id=create_saved_bronze_tables, execution_date=20250912T050446, start_date=20250912T050448, end_date=20250912T050450
+[2025-09-12T05:04:50.167+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 261 for task create_saved_bronze_tables ([Errno 2] No such file or directory: 'sql/bronze/create_spotify_saved_songs.sql'; 23021)
+[2025-09-12T05:04:50.230+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-09-12T05:04:50.521+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

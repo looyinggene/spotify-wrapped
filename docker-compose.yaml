@@ -1,0 +1,108 @@
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: spotify
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8081:80"
+    depends_on:
+      - postgres
+  
+  nodejs-app:
+    build:
+      context: ./nodejs-app
+      dockerfile: Dockerfile
+    container_name: nodejs_app
+    ports:
+      - "3001:3000"
+    env_file:
+      - key.env
+
+
+  airflow-webserver:
+    image: apache/airflow:2.7.0
+    container_name: airflow-webserver
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/spotify
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__CORE__DEFAULT_TIMEZONE: "Asia/Kuala_Lumpur"
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: airflow
+      _AIRFLOW_WWW_USER_PASSWORD: airflow
+    volumes:
+      - .:/opt/airflow
+    ports:
+      - "8080:8080"
+    command: webserver
+
+  airflow-scheduler:
+    image: apache/airflow:2.7.0
+    container_name: airflow-scheduler
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/spotify
+    volumes:
+      - .:/opt/airflow
+    command: scheduler
+
+  python-app:
+    build: .
+    volumes:
+      - .:/app
+    env_file:
+      - key.env
+    tty: true
+  
+  api-server:
+    build:
+      context: ./api
+    container_name: spotify-api
+    restart: always
+    environment:
+      # Pass the database connection string as an environment variable
+      DATABASE_URL: postgresql://airflow:airflow@postgres:5432/spotify
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev  # Use the new development Dockerfile
+      args:
+        - REACT_APP_API_URL=http://api-server:5000 # Use the service name
+    container_name: spotify-frontend
+    restart: always
+    ports:
+      - "3000:3000"  # Map your local port 3000 to the container's port 3000
+    volumes:
+      - ./frontend:/app  # Syncs your local code to the container
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Enables file watching in Docker
+    depends_on:
+      - api-server
+
+volumes:
+  postgres_data:

@@ -1,0 +1,30 @@
+[2025-09-15T06:50:37.729+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_view manual__2025-09-15T06:50:13.541524+00:00 [queued]>
+[2025-09-15T06:50:37.736+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_view manual__2025-09-15T06:50:13.541524+00:00 [queued]>
+[2025-09-15T06:50:37.736+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2025-09-15T06:50:37.745+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): gold_view> on 2025-09-15 06:50:13.541524+00:00
+[2025-09-15T06:50:37.751+0000] {standard_task_runner.py:57} INFO - Started process 32275 to run task
+[2025-09-15T06:50:37.754+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'gold_view', 'manual__2025-09-15T06:50:13.541524+00:00', '--job-id', '822', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmpbopqn8uz']
+[2025-09-15T06:50:37.757+0000] {standard_task_runner.py:85} INFO - Job 822: Subtask gold_view
+[2025-09-15T06:50:37.816+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.gold_view manual__2025-09-15T06:50:13.541524+00:00 [running]> on host 0d0cd054d690
+[2025-09-15T06:50:38.167+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='gold_view' AIRFLOW_CTX_EXECUTION_DATE='2025-09-15T06:50:13.541524+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-15T06:50:13.541524+00:00'
+[2025-09-15T06:50:38.182+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_monthly_genre_distribution.sql
+[2025-09-15T06:50:38.184+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_monthly_genre_top_artists.sql
+[2025-09-15T06:50:38.185+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/etl/db_utils.py", line 11, in run_sql_scripts
+    cur.execute(sql)
+psycopg2.errors.SyntaxError: syntax error at or near "AS"
+LINE 5:   ROUND(SUM(t.song_duration_sec) / 60.0 AS total_minutes_lis...
+                                                ^
+
+[2025-09-15T06:50:38.192+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=spotify_etl_pipeline, task_id=gold_view, execution_date=20250915T065013, start_date=20250915T065037, end_date=20250915T065038
+[2025-09-15T06:50:38.202+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 822 for task gold_view (syntax error at or near "AS"
+LINE 5:   ROUND(SUM(t.song_duration_sec) / 60.0 AS total_minutes_lis...
+                                                ^
+; 32275)
+[2025-09-15T06:50:38.235+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-09-15T06:50:38.251+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

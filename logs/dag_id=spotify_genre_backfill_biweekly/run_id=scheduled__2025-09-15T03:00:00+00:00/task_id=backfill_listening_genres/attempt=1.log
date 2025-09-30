@@ -1,0 +1,14 @@
+[2025-09-21T03:00:01.500+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_genre_backfill_biweekly.backfill_listening_genres scheduled__2025-09-15T03:00:00+00:00 [queued]>
+[2025-09-21T03:00:01.510+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_genre_backfill_biweekly.backfill_listening_genres scheduled__2025-09-15T03:00:00+00:00 [queued]>
+[2025-09-21T03:00:01.511+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-21T03:00:01.605+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): backfill_listening_genres> on 2025-09-15 03:00:00+00:00
+[2025-09-21T03:00:01.614+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_genre_backfill_biweekly', 'backfill_listening_genres', 'scheduled__2025-09-15T03:00:00+00:00', '--job-id', '1544', '--raw', '--subdir', 'DAGS_FOLDER/spotify_genre_backfill_dag.py', '--cfg-path', '/tmp/tmpul7rr1yx']
+[2025-09-21T03:00:01.612+0000] {standard_task_runner.py:57} INFO - Started process 57293 to run task
+[2025-09-21T03:00:01.617+0000] {standard_task_runner.py:85} INFO - Job 1544: Subtask backfill_listening_genres
+[2025-09-21T03:00:01.679+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_genre_backfill_biweekly.backfill_listening_genres scheduled__2025-09-15T03:00:00+00:00 [running]> on host 8a603698361b
+[2025-09-21T03:00:01.758+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_genre_backfill_biweekly' AIRFLOW_CTX_TASK_ID='backfill_listening_genres' AIRFLOW_CTX_EXECUTION_DATE='2025-09-15T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-15T03:00:00+00:00'
+[2025-09-21T03:00:01.768+0000] {logging_mixin.py:151} INFO - 🎉 No missing artists from listening history to backfill.
+[2025-09-21T03:00:01.769+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-09-21T03:00:01.776+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=spotify_genre_backfill_biweekly, task_id=backfill_listening_genres, execution_date=20250915T030000, start_date=20250921T030001, end_date=20250921T030001
+[2025-09-21T03:00:01.799+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-21T03:00:01.821+0000] {taskinstance.py:2784} INFO - 1 downstream tasks scheduled from follow-on schedule check

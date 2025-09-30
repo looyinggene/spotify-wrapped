@@ -1,0 +1,22 @@
+[2025-09-29T12:04:53.189+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.fetch_top_song_previews scheduled__2025-09-29T11:00:00+00:00 [queued]>
+[2025-09-29T12:04:53.198+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.fetch_top_song_previews scheduled__2025-09-29T11:00:00+00:00 [queued]>
+[2025-09-29T12:04:53.199+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2025-09-29T12:04:53.211+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): fetch_top_song_previews> on 2025-09-29 11:00:00+00:00
+[2025-09-29T12:04:53.216+0000] {standard_task_runner.py:57} INFO - Started process 6690 to run task
+[2025-09-29T12:04:53.220+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'fetch_top_song_previews', 'scheduled__2025-09-29T11:00:00+00:00', '--job-id', '2915', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmpjshcgoks']
+[2025-09-29T12:04:53.225+0000] {standard_task_runner.py:85} INFO - Job 2915: Subtask fetch_top_song_previews
+[2025-09-29T12:04:53.639+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.fetch_top_song_previews scheduled__2025-09-29T11:00:00+00:00 [running]> on host 8522660cfb6a
+[2025-09-29T12:04:53.750+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='fetch_top_song_previews' AIRFLOW_CTX_EXECUTION_DATE='2025-09-29T11:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-29T11:00:00+00:00'
+[2025-09-29T12:04:53.759+0000] {logging_mixin.py:151} INFO - Found 5 top songs. Fetching audio preview links from microservice.
+[2025-09-29T12:04:58.768+0000] {logging_mixin.py:151} INFO - ✅ Saved 5 top song audio links to data/top_song_previews.csv
+[2025-09-29T12:04:58.774+0000] {python.py:194} INFO - Done. Returned value was:                  track_id  ...   last_updated_datetime_utc
+0  5kt5UfkL18qq7AxYOCyQlt  ...  2025-09-29T12:04:58.721043
+1  5z2wFoVRqnuxYmauqrKxdP  ...  2025-09-29T12:04:58.721097
+2  3LOTdehsLMCm3u0CNJwsL3  ...  2025-09-29T12:04:58.721101
+3  7e9TMRRYkj9JZgIkIGPTfl  ...  2025-09-29T12:04:58.721102
+4  7xAVLrbnud6OrU6f4FmxDr  ...  2025-09-29T12:04:58.721103
+
+[5 rows x 3 columns]
+[2025-09-29T12:04:58.915+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=spotify_etl_pipeline, task_id=fetch_top_song_previews, execution_date=20250929T110000, start_date=20250929T120453, end_date=20250929T120458
+[2025-09-29T12:04:58.959+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-29T12:04:59.409+0000] {taskinstance.py:2784} INFO - 1 downstream tasks scheduled from follow-on schedule check

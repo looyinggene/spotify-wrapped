@@ -1,0 +1,34 @@
+[2025-09-24T12:20:53.182+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_view manual__2025-09-24T12:20:22.090131+00:00 [queued]>
+[2025-09-24T12:20:53.190+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_view manual__2025-09-24T12:20:22.090131+00:00 [queued]>
+[2025-09-24T12:20:53.191+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2025-09-24T12:20:53.201+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): gold_view> on 2025-09-24 12:20:22.090131+00:00
+[2025-09-24T12:20:53.207+0000] {standard_task_runner.py:57} INFO - Started process 702 to run task
+[2025-09-24T12:20:53.209+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'gold_view', 'manual__2025-09-24T12:20:22.090131+00:00', '--job-id', '2072', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmpy3_l2uu7']
+[2025-09-24T12:20:53.213+0000] {standard_task_runner.py:85} INFO - Job 2072: Subtask gold_view
+[2025-09-24T12:20:53.431+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.gold_view manual__2025-09-24T12:20:22.090131+00:00 [running]> on host 155c836243e5
+[2025-09-24T12:20:53.506+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='gold_view' AIRFLOW_CTX_EXECUTION_DATE='2025-09-24T12:20:22.090131+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-24T12:20:22.090131+00:00'
+[2025-09-24T12:20:53.513+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_monthly_genre_distribution.sql
+[2025-09-24T12:20:53.515+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_monthly_genre_top_artists.sql
+[2025-09-24T12:20:53.516+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_top_artists.sql
+[2025-09-24T12:20:53.518+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_top_songs.sql
+[2025-09-24T12:20:53.520+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_total_listening_by_day.sql
+[2025-09-24T12:20:53.521+0000] {logging_mixin.py:151} INFO - Executed sql/views/listening_history/view_total_listening_overall.sql
+[2025-09-24T12:20:53.523+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/etl/db_utils.py", line 11, in run_sql_scripts
+    cur.execute(sql)
+psycopg2.errors.UndefinedTable: relation "gold.top_song_previews" does not exist
+LINE 6: INNER JOIN gold.top_song_previews p
+                   ^
+
+[2025-09-24T12:20:53.531+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=spotify_etl_pipeline, task_id=gold_view, execution_date=20250924T122022, start_date=20250924T122053, end_date=20250924T122053
+[2025-09-24T12:20:53.542+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 2072 for task gold_view (relation "gold.top_song_previews" does not exist
+LINE 6: INNER JOIN gold.top_song_previews p
+                   ^
+; 702)
+[2025-09-24T12:20:53.558+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-09-24T12:20:53.580+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

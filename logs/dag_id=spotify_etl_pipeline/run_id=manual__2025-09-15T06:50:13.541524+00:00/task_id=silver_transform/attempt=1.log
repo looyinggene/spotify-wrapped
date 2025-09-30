@@ -1,0 +1,16 @@
+[2025-09-15T06:50:33.009+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.silver_transform manual__2025-09-15T06:50:13.541524+00:00 [queued]>
+[2025-09-15T06:50:33.025+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.silver_transform manual__2025-09-15T06:50:13.541524+00:00 [queued]>
+[2025-09-15T06:50:33.026+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2025-09-15T06:50:33.044+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): silver_transform> on 2025-09-15 06:50:13.541524+00:00
+[2025-09-15T06:50:33.053+0000] {standard_task_runner.py:57} INFO - Started process 32263 to run task
+[2025-09-15T06:50:33.058+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'silver_transform', 'manual__2025-09-15T06:50:13.541524+00:00', '--job-id', '820', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmp9y7kp_vw']
+[2025-09-15T06:50:33.061+0000] {standard_task_runner.py:85} INFO - Job 820: Subtask silver_transform
+[2025-09-15T06:50:33.103+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.silver_transform manual__2025-09-15T06:50:13.541524+00:00 [running]> on host 0d0cd054d690
+[2025-09-15T06:50:33.551+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='silver_transform' AIRFLOW_CTX_EXECUTION_DATE='2025-09-15T06:50:13.541524+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-15T06:50:13.541524+00:00'
+[2025-09-15T06:50:33.596+0000] {logging_mixin.py:151} INFO - Executed sql/silver/spotify_songs_load.sql
+[2025-09-15T06:50:33.623+0000] {logging_mixin.py:151} INFO - Executed sql/silver/spotify_genres_load.sql
+[2025-09-15T06:50:33.633+0000] {logging_mixin.py:151} INFO - ✅ All SQL scripts executed successfully
+[2025-09-15T06:50:33.634+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-09-15T06:50:33.646+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=spotify_etl_pipeline, task_id=silver_transform, execution_date=20250915T065013, start_date=20250915T065033, end_date=20250915T065033
+[2025-09-15T06:50:33.712+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-15T06:50:33.741+0000] {taskinstance.py:2784} INFO - 1 downstream tasks scheduled from follow-on schedule check

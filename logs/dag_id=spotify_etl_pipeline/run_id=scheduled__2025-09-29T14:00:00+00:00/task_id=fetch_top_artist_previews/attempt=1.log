@@ -1,0 +1,22 @@
+[2025-09-29T15:08:08.161+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.fetch_top_artist_previews scheduled__2025-09-29T14:00:00+00:00 [queued]>
+[2025-09-29T15:08:08.170+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.fetch_top_artist_previews scheduled__2025-09-29T14:00:00+00:00 [queued]>
+[2025-09-29T15:08:08.170+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 6
+[2025-09-29T15:08:08.190+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): fetch_top_artist_previews> on 2025-09-29 14:00:00+00:00
+[2025-09-29T15:08:08.208+0000] {standard_task_runner.py:57} INFO - Started process 11243 to run task
+[2025-09-29T15:08:08.218+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'fetch_top_artist_previews', 'scheduled__2025-09-29T14:00:00+00:00', '--job-id', '2955', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmpvyle3fss']
+[2025-09-29T15:08:08.227+0000] {standard_task_runner.py:85} INFO - Job 2955: Subtask fetch_top_artist_previews
+[2025-09-29T15:08:09.204+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.fetch_top_artist_previews scheduled__2025-09-29T14:00:00+00:00 [running]> on host 8522660cfb6a
+[2025-09-29T15:08:09.462+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='fetch_top_artist_previews' AIRFLOW_CTX_EXECUTION_DATE='2025-09-29T14:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-29T14:00:00+00:00'
+[2025-09-29T15:08:09.475+0000] {logging_mixin.py:151} INFO - Found top song for Kevin Penkin (Rank 1). Fetching audio preview.
+[2025-09-29T15:08:11.238+0000] {logging_mixin.py:151} INFO - Found top song for Taylor Swift (Rank 2). Fetching audio preview.
+[2025-09-29T15:08:12.049+0000] {logging_mixin.py:151} INFO - Found top song for Eason Chan (Rank 3). Fetching audio preview.
+[2025-09-29T15:08:13.049+0000] {logging_mixin.py:151} INFO - ✅ Saved audio links for 3 top artist songs to data/top_n_artist_song_audio_previews.csv
+[2025-09-29T15:08:13.050+0000] {python.py:194} INFO - Done. Returned value was:    artist_rank  ...   last_updated_datetime_utc
+0            1  ...  2025-09-29T15:08:11.212255
+1            2  ...  2025-09-29T15:08:12.038708
+2            3  ...  2025-09-29T15:08:13.029273
+
+[3 rows x 6 columns]
+[2025-09-29T15:08:13.197+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=spotify_etl_pipeline, task_id=fetch_top_artist_previews, execution_date=20250929T140000, start_date=20250929T150808, end_date=20250929T150813
+[2025-09-29T15:08:13.263+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-29T15:08:13.346+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

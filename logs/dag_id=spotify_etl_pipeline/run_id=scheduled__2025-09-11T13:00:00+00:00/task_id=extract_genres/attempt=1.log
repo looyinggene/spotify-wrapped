@@ -1,0 +1,13 @@
+[2025-09-11T14:04:47.238+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.extract_genres scheduled__2025-09-11T13:00:00+00:00 [queued]>
+[2025-09-11T14:04:47.244+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.extract_genres scheduled__2025-09-11T13:00:00+00:00 [queued]>
+[2025-09-11T14:04:47.245+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-11T14:04:47.253+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): extract_genres> on 2025-09-11 13:00:00+00:00
+[2025-09-11T14:04:47.258+0000] {standard_task_runner.py:57} INFO - Started process 18499 to run task
+[2025-09-11T14:04:47.261+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'extract_genres', 'scheduled__2025-09-11T13:00:00+00:00', '--job-id', '219', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmpn8j6zcgf']
+[2025-09-11T14:04:47.263+0000] {standard_task_runner.py:85} INFO - Job 219: Subtask extract_genres
+[2025-09-11T14:04:47.305+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.extract_genres scheduled__2025-09-11T13:00:00+00:00 [running]> on host 0d0cd054d690
+[2025-09-11T14:04:47.364+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='extract_genres' AIRFLOW_CTX_EXECUTION_DATE='2025-09-11T13:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-11T13:00:00+00:00'
+[2025-09-11T14:04:51.637+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-09-11T14:04:51.676+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=spotify_etl_pipeline, task_id=extract_genres, execution_date=20250911T130000, start_date=20250911T140447, end_date=20250911T140451
+[2025-09-11T14:04:51.714+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-11T14:04:51.761+0000] {taskinstance.py:2784} INFO - 2 downstream tasks scheduled from follow-on schedule check

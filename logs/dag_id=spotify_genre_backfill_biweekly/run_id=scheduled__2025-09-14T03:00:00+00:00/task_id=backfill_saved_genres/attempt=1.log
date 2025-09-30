@@ -1,0 +1,16 @@
+[2025-09-15T03:09:41.877+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_genre_backfill_biweekly.backfill_saved_genres scheduled__2025-09-14T03:00:00+00:00 [queued]>
+[2025-09-15T03:09:41.885+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_genre_backfill_biweekly.backfill_saved_genres scheduled__2025-09-14T03:00:00+00:00 [queued]>
+[2025-09-15T03:09:41.885+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-15T03:09:42.126+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): backfill_saved_genres> on 2025-09-14 03:00:00+00:00
+[2025-09-15T03:09:42.133+0000] {standard_task_runner.py:57} INFO - Started process 27619 to run task
+[2025-09-15T03:09:42.138+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_genre_backfill_biweekly', 'backfill_saved_genres', 'scheduled__2025-09-14T03:00:00+00:00', '--job-id', '722', '--raw', '--subdir', 'DAGS_FOLDER/spotify_genre_backfill_dag.py', '--cfg-path', '/tmp/tmp22ud3sy9']
+[2025-09-15T03:09:42.141+0000] {standard_task_runner.py:85} INFO - Job 722: Subtask backfill_saved_genres
+[2025-09-15T03:09:42.197+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_genre_backfill_biweekly.backfill_saved_genres scheduled__2025-09-14T03:00:00+00:00 [running]> on host 0d0cd054d690
+[2025-09-15T03:09:42.289+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_genre_backfill_biweekly' AIRFLOW_CTX_TASK_ID='backfill_saved_genres' AIRFLOW_CTX_EXECUTION_DATE='2025-09-14T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-14T03:00:00+00:00'
+[2025-09-15T03:09:42.298+0000] {logging_mixin.py:151} INFO - 🔍 Found 179 missing artists from saved songs.
+[2025-09-15T03:10:18.973+0000] {logging_mixin.py:151} INFO - ✅ Upserted 179 genre records
+[2025-09-15T03:10:18.974+0000] {logging_mixin.py:151} INFO - ✅ Backfilled 179 genres from saved songs.
+[2025-09-15T03:10:18.975+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-09-15T03:10:18.999+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=spotify_genre_backfill_biweekly, task_id=backfill_saved_genres, execution_date=20250914T030000, start_date=20250915T030941, end_date=20250915T031018
+[2025-09-15T03:10:19.042+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-15T03:10:19.062+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

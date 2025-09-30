@@ -1,0 +1,28 @@
+[2025-09-15T15:25:25.983+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_transform scheduled__2025-09-15T14:00:00+00:00 [queued]>
+[2025-09-15T15:25:25.994+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: spotify_etl_pipeline.gold_transform scheduled__2025-09-15T14:00:00+00:00 [queued]>
+[2025-09-15T15:25:25.995+0000] {taskinstance.py:1361} INFO - Starting attempt 6 of 6
+[2025-09-15T15:25:26.006+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): gold_transform> on 2025-09-15 14:00:00+00:00
+[2025-09-15T15:25:26.022+0000] {standard_task_runner.py:57} INFO - Started process 9794 to run task
+[2025-09-15T15:25:26.026+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'spotify_etl_pipeline', 'gold_transform', 'scheduled__2025-09-15T14:00:00+00:00', '--job-id', '939', '--raw', '--subdir', 'DAGS_FOLDER/spotify_dag.py', '--cfg-path', '/tmp/tmplcpoevxa']
+[2025-09-15T15:25:26.029+0000] {standard_task_runner.py:85} INFO - Job 939: Subtask gold_transform
+[2025-09-15T15:25:26.084+0000] {task_command.py:415} INFO - Running <TaskInstance: spotify_etl_pipeline.gold_transform scheduled__2025-09-15T14:00:00+00:00 [running]> on host 537418afed42
+[2025-09-15T15:25:26.464+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='spotify_etl_pipeline' AIRFLOW_CTX_TASK_ID='gold_transform' AIRFLOW_CTX_EXECUTION_DATE='2025-09-15T14:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-15T14:00:00+00:00'
+[2025-09-15T15:25:26.470+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/etl/db_utils.py", line 11, in run_sql_scripts
+    cur.execute(sql)
+psycopg2.errors.SyntaxError: syntax error at or near ")"
+LINE 14: );
+         ^
+
+[2025-09-15T15:25:26.478+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=spotify_etl_pipeline, task_id=gold_transform, execution_date=20250915T140000, start_date=20250915T152525, end_date=20250915T152526
+[2025-09-15T15:25:26.486+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 939 for task gold_transform (syntax error at or near ")"
+LINE 14: );
+         ^
+; 9794)
+[2025-09-15T15:25:26.510+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-09-15T15:25:26.527+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check
