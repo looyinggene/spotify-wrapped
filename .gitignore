@@ -3,6 +3,9 @@ key.env
 .env
 .env.local
 
+# Airflow/Docker Log Files
+logs/
+
 # Dependencies
 node_modules
 
