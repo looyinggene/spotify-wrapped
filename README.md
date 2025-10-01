@@ -53,18 +53,12 @@ The React application's core complexity lies in the timed story transitions:
 To view the application and Airflow pipeline in action, see the following screenshots:
 
 ### 1. Airflow Pipeline Status
-*Show a screenshot of your **Airflow UI** (DAGs view or a successful graph view) demonstrating the complexity of your ETL workflow.*
-
-> **[Screenshot of Airflow DAG running successfully (showing task dependencies)]**
->
-> *This screenshot shows the scheduled execution of the core ETL pipeline, validating the successful completion of data extraction, multiple transformation steps, and the final load to the Gold layer.*
+![Screenshot of the successful Airflow ETL DAG Graph](demo/airflow_tasks.png)
+> *This screenshot shows the scheduled execution of the main ETL pipeline, validating the successful completion of data extraction, multiple transformation steps, and the final load to the Gold layer.*
 
 ### 2. Frontend Visualization
-*Show a screenshot of the actual React application displaying a key metric slide (e.g., Top Songs, Top Genres, or Total Minutes).*
-
-> **[Screenshot of the React App showing a 'Top Songs' slide]**
->
-> *The resulting data powers a dynamic, modern React frontend. This view illustrates the complex visualization of ranked data within the story format.*
+![Screenshot of the successful Airflow ETL DAG Graph](demo/demo.png)
+> *The resulting data powers a dynamic, modern React frontend. *
 
 ---
 
